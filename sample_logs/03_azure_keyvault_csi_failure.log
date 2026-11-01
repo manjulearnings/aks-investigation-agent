@@ -1,0 +1,5 @@
+2026-11-01T11:05:00.192837Z stdout F [INFO] Starting auth-service container pod
+2026-11-01T11:05:02.829104Z stderr F Warning  FailedMount  pod/auth-service-59bc847684-x89lp  MountVolume.SetUp failed for volume "secrets-store-inline" : provider-azure-cssi: keyvault.go: failed to get secret from https://my-prod-vault.vault.azure.net: 401 Unauthorized, failed to get key vault token: failed to acquire token with azure workload identity
+2026-11-01T11:05:15.192849Z stderr F Warning  FailedMount  pod/auth-service-59bc847684-x89lp  MountVolume.SetUp failed for volume "secrets-store-inline" : keyvault.go: failed to get secret
+2026-11-01T11:05:30.918274Z stderr F Error: container start aborted due to missing volume mount for secrets-store-inline
+

@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aks-investigation-agent"
+version = "0.1.0"
+description = "Autonomous Azure Kubernetes Service (AKS) & Azure Monitor Incident Investigation Agent"
+readme = "README.md"
+authors = [{ name = "DevOps & SRE Platform Team" }]
+license = { text = "Apache-2.0" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: System :: Monitoring",
+    "Topic :: System :: Systems Administration",
+]
+dependencies = [
+    "pydantic>=2.5.0",
+    "rich>=13.7.0",
+    "httpx>=0.25.0",
+    "azure-identity>=1.15.0",
+    "azure-monitor-query>=1.2.0",
+    "openai>=1.12.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+]
+
+[project.scripts]
+aks-agent = "aks_agent.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+

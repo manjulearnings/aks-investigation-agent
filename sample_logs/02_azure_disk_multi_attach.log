@@ -1,0 +1,5 @@
+2026-11-01T09:20:10.019284Z stdout F [INFO] Initializing stateful postgres-replica-0
+2026-11-01T09:20:12.392019Z stderr F Warning  FailedAttachVolume  pod/postgres-replica-0  AttachVolume.Attach failed for volume "pvc-89a1f2bc-3810-4829-9182-9988112233aa" : Multi-Attach error for volume "pvc-89a1f2bc-3810-4829-9182-9988112233aa" Volume is already exclusively attached to one node and can't be attached to another
+2026-11-01T09:20:25.109281Z stderr F Warning  FailedMount  pod/postgres-replica-0  Unable to attach or mount volumes: timed out waiting for the condition
+2026-11-01T09:20:45.391028Z stderr F Warning  FailedAttachVolume  pod/postgres-replica-0  AttachVolume.Attach failed: VolumeAttachment is timed out waiting for detachment from previous node aks-nodepool1-12345678-vmss000001
+

@@ -1,0 +1,5 @@
+2026-11-01T12:00:01.019284Z stdout F [INFO] Kubelet pulling image from Azure Container Registry
+2026-11-01T12:00:02.392019Z stderr F Warning  Failed  pod/analytics-worker-7c49dfbb88-29mks  Failed to pull image "mycorpacr.azurecr.io/analytics/worker:v2.4.1": rpc error: code = Unknown desc = failed to pull and unpack image "mycorpacr.azurecr.io/analytics/worker:v2.4.1": failed to resolve reference: failed to authorize: failed to fetch oauth token: unexpected status from GET request to https://mycorpacr.azurecr.io/oauth2/token: 401 Unauthorized
+2026-11-01T12:00:03.119281Z stderr F Warning  Failed  pod/analytics-worker-7c49dfbb88-29mks  Error: ImagePullBackOff
+2026-11-01T12:00:15.391028Z stderr F Warning  BackOff  pod/analytics-worker-7c49dfbb88-29mks  Back-off pulling image "mycorpacr.azurecr.io/analytics/worker:v2.4.1"
+

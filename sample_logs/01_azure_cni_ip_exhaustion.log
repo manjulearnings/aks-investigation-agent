@@ -1,0 +1,7 @@
+2026-11-01T08:14:02.102941Z stdout F [INFO] Starting payment-gateway container init process
+2026-11-01T08:14:03.491024Z stderr F Warning  FailedCreatePodSandBox  pod/payment-gateway-6f987dbf54-zk92w  Failed to create pod sandbox: rpc error: code = Unknown desc = failed to set up network for sandbox "payment-gateway-6f987dbf54-zk92w": NetworkPlugin cni failed to set up pod "payment-gateway-6f987dbf54-zk92w_production" network: Failed to allocate IP address from subnet: No more IP addresses available in subnet
+2026-11-01T08:14:05.118940Z stderr F Warning  FailedCreatePodSandBox  pod/payment-gateway-6f987dbf54-zk92w  Failed to create pod sandbox: rpc error: code = Unknown desc = failed to set up network for sandbox: Failed to allocate IP address from subnet
+2026-11-01T08:14:15.849201Z stderr F Warning  FailedCreatePodSandBox  pod/payment-gateway-6f987dbf54-zk92w  Failed to create pod sandbox: NetworkPlugin cni failed: allocate IP failed
+2026-11-01T08:14:30.229103Z stdout F Warning  BackOff  pod/payment-gateway-6f987dbf54-zk92w  Back-off restarting failed container
+2026-11-01T08:14:31.001923Z stderr F CrashLoopBackOff: back-off 10s restarting failed container=payment-gateway pod=payment-gateway-6f987dbf54-zk92w
+
