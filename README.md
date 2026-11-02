@@ -120,17 +120,28 @@ If querying Azure Log Analytics or invoking Azure OpenAI directly from the CLI:
 
 ---
 
-## 🚀 Installation
+## 🚀 Quick Installation
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/manjulearnings/aks-investigation-agent.git
 cd aks-investigation-agent
+
+# 2. Create and activate a virtual environment
+# Windows (PowerShell):
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+
+# Linux / macOS:
+python3 -m venv venv
+source venv/bin/activate
+
+# 3. Install the agent
 pip install -e .
 ```
 
-Or install dependencies directly:
-```bash
-pip install -r requirements.txt
-```
+> [!TIP]
+> Looking for copy-paste workflows and practical recipes? Check out the **[Complete HOWTO Guide](HOWTO.md)**!
 
 ---
 
