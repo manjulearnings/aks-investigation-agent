@@ -73,6 +73,47 @@ flowchart TD
 
 ---
 
+## 📋 Prerequisites & System Requirements
+
+Before cloning and running the AKS agent, ensure the following requirements are met:
+
+### 1. System Requirements
+| Requirement | Specification | Notes |
+| :--- | :--- | :--- |
+| **Operating System** | Linux, macOS, or Windows | Fully cross-platform (Bash, Zsh, PowerShell). |
+| **Python** | **Python 3.9+** (3.10 – 3.12 recommended) | Check with `python --version` or `python3 --version`. |
+| **Package Manager** | `pip` (or `poetry`, `conda`, `uv`) | Standard Python package installer. |
+| **Virtual Environment** | Recommended (`venv` or `conda`) | Isolates dependencies from system Python. |
+
+### 2. Optional CLI Tools
+- **Azure CLI (`az`)** *(Optional but recommended)*: Version 2.45+ for cluster authentication and executing generated `az aks` remediation commands:
+  ```bash
+  az login
+  ```
+- **`kubectl`** *(Optional)*: Recommended for live log streaming and cluster inspection:
+  ```bash
+  az aks get-credentials --resource-group myRG --name myCluster
+  ```
+
+### 3. Network & Connectivity
+- **Offline / Local Mode**: **Air-gapped safe**. Zero network connectivity, zero cloud accounts, and zero credentials needed to analyze local files, exported `ContainerLogV2` CSV/JSON files, or stdin pipes.
+- **Azure Monitor Querying**: Requires outbound HTTPS (Port 443) to `https://api.loganalytics.io`.
+- **Azure OpenAI Diagnosis**: Requires outbound HTTPS (Port 443) to `https://<your-resource>.openai.azure.com`.
+- **Teams Notifications**: Requires outbound HTTPS (Port 443) to `https://outlook.office.com`.
+
+### 4. Cloud Permissions & RBAC Roles (Only for Cloud-Connected Features)
+
+If querying Azure Log Analytics or invoking Azure OpenAI directly from the CLI:
+
+| Feature | Required Azure RBAC Role | Environment Variables |
+| :--- | :--- | :--- |
+| **Azure Monitor / Log Analytics Querying** | **Log Analytics Reader** (or *Monitoring Reader*) on the workspace/resource group | `AZURE_LOG_ANALYTICS_WORKSPACE_ID` |
+| **Azure OpenAI Service (Passwordless)** | **Cognitive Services OpenAI User** on the Azure OpenAI resource | `AZURE_OPENAI_ENDPOINT`<br>`AZURE_OPENAI_DEPLOYMENT` |
+| **Azure OpenAI Service (API Key)** | N/A (Key-based authentication) | `AZURE_OPENAI_KEY`<br>`AZURE_OPENAI_ENDPOINT`<br>`AZURE_OPENAI_DEPLOYMENT` |
+| **Microsoft Teams Webhook** | Webhook Connector created in target Teams Channel | Pass via `--teams-webhook <url>` |
+
+---
+
 ## 🚀 Installation
 
 ```bash
