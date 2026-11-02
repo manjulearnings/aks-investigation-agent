@@ -1,6 +1,12 @@
 # ☁️ Azure Kubernetes Service (AKS) Investigation Agent
 
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](pyproject.toml)
+[![Docs](https://img.shields.io/badge/docs-HOWTO.md-green.svg)](HOWTO.md)
+
 An autonomous incident investigation agent designed specifically for **Azure Kubernetes Service (AKS)**, **Azure Monitor (ContainerLogV2 / KubeEvents)**, and **Azure OpenAI Service**.
+
+👉 **[Read the Step-by-Step HOWTO & Usage Recipes Guide (HOWTO.md)](HOWTO.md)**
 
 The agent ingests AKS container runtime logs, event streams, or direct Azure Log Analytics telemetry, performs deep causal failure analysis across Azure cloud-infrastructure boundaries, catalogs empirical supporting evidence, and generates actionable `az aks` and `kubectl` remediation plans.
 
@@ -130,7 +136,7 @@ pip install -r requirements.txt
 
 ## 💻 CLI Usage
 
-The agent installs a CLI command `aks-agent` (or `python -m aks_agent.cli`):
+The agent installs a CLI command `aks-agent` (or `python -m aks_agent.cli`). For full step-by-step recipes and advanced options, see the **[HOWTO Guide](HOWTO.md)**:
 
 ### 1. Analyze a Local Log File
 ```bash
