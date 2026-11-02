@@ -1,23 +1,37 @@
 # 📖 How-To Guide & Usage Recipes
 
-Welcome to the **AKS Investigation Agent** practical guide! Whether you are a beginner developer, an on-call SRE, or a platform lead, this guide walks you through every practical way to use this agent with ready-to-run copy-paste commands.
+Welcome to the **AKS Investigation Agent** practical guide! This document provides real-world recipes, copy-paste commands, and workflows for Site Reliability Engineers (SREs), DevOps practitioners, and platform engineers.
+
+---
+
+## 📑 Table of Contents
+1. [⚡ Quick Start Checklist](#-quick-start-checklist)
+2. [🖥️ What Does the Output Look Like?](#️-what-does-the-output-look-like)
+3. [Recipe 1: Offline / Local Log Analysis (Air-Gapped)](#recipe-1-offline--local-log-analysis-air-gapped) ("I want to test the tool right now with sample logs")
+4. [Recipe 2: Live On-Call SRE Debugging (kubectl & az aks piping)](#recipe-2-live-on-call-sre-debugging-kubectl--az-aks-piping) ("A pod is crashing or stuck in my cluster right now")
+5. [Recipe 3: Direct Azure Log Analytics Querying (KQL)](#recipe-3-direct-azure-log-analytics-querying-kql) ("The pod crashed hours ago and is already deleted")
+6. [Recipe 4: ChatOps & Incident Delivery (Teams & Azure DevOps)](#recipe-4-chatops--incident-delivery-teams--azure-devops) ("I want to send incident alerts to Microsoft Teams / DevOps")
+7. [Recipe 5: AI-Powered Deep Diagnosis with Azure OpenAI](#recipe-5-ai-powered-deep-diagnosis-with-azure-openai) ("My app crashed with a mysterious Java/Python/.NET exception")
+8. [Recipe 6: Python SDK & CI/CD Integration](#recipe-6-python-sdk--cicd-integration) ("I want to automate checks in my CI/CD pipeline or Python code")
+9. [🎛️ CLI Options & Flags Reference](#️-cli-options--flags-reference)
+10. [❓ Frequently Asked Questions (FAQ)](#-frequently-asked-questions-faq)
 
 ---
 
 ## 🎯 At a Glance: Which Recipe Do I Need?
 
-| Your Goal / Scenario | Recommended Recipe | Do I Need Azure Credentials? |
+| Recipe (Earlier Version) | Scenario & Goal (User-Friendly Version) | Azure Credentials Required? |
 | :--- | :--- | :--- |
-| **"I want to test the tool right now with sample logs"** | [Recipe 1: Offline / Local Log Analysis](#recipe-1-offline--local-log-analysis-air-gapped) | ❌ **No** (100% offline & air-gapped) |
-| **"A pod is crashing or stuck in my cluster right now"** | [Recipe 2: Live On-Call SRE Debugging](#recipe-2-live-on-call-sre-debugging-kubectl--az-aks-piping) | ❌ **No** (just `kubectl` or `az login`) |
-| **"The pod crashed hours ago and is already deleted"** | [Recipe 3: Direct Azure Log Analytics](#recipe-3-direct-azure-log-analytics-querying-kql) | ✅ **Yes** (`Log Analytics Reader`) |
-| **"I want to send incident alerts to Microsoft Teams / DevOps"** | [Recipe 4: ChatOps & Incident Delivery](#recipe-4-chatops--incident-delivery-teams--azure-devops) | ❌ **No** (just a Teams webhook URL) |
-| **"My app crashed with a mysterious Java/Python/.NET exception"** | [Recipe 5: Deep Diagnosis with Azure OpenAI](#recipe-5-ai-powered-deep-diagnosis-with-azure-openai) | ✅ **Yes** (`AZURE_OPENAI_ENDPOINT`) |
-| **"I want to automate checks in my CI/CD pipeline or Python code"**| [Recipe 6: Python SDK & CI/CD](#recipe-6-python-sdk--cicd-integration) | ❌ **No** (standard Python) |
+| **Recipe 1: Offline / Local Log Analysis (Air-Gapped)** | *"I want to test the tool right now with sample logs"* | ❌ **No** (100% offline & air-gapped) |
+| **Recipe 2: Live On-Call SRE Debugging (kubectl & az aks piping)** | *"A pod is crashing or stuck in my cluster right now"* | ❌ **No** (standard `kubectl` / `az login`) |
+| **Recipe 3: Direct Azure Log Analytics Querying (KQL)** | *"The pod crashed hours ago and is already deleted"* | ✅ **Yes** (`Log Analytics Reader`) |
+| **Recipe 4: ChatOps & Incident Delivery (Teams & Azure DevOps)** | *"I want to send incident alerts to Microsoft Teams / DevOps"* | ❌ **No** (just a Teams webhook URL) |
+| **Recipe 5: AI-Powered Deep Diagnosis with Azure OpenAI** | *"My app crashed with a mysterious Java/Python/.NET exception"* | ✅ **Yes** (`AZURE_OPENAI_ENDPOINT`) |
+| **Recipe 6: Python SDK & CI/CD Integration** | *"I want to automate checks in my CI/CD pipeline or Python code"* | ❌ **No** (standard Python) |
 
 ---
 
-## ⚡ 2-Minute Quickstart
+## ⚡ Quick Start Checklist
 
 ### Step 1: Clone & Set Up Virtual Environment
 
@@ -52,7 +66,13 @@ source venv/bin/activate
 pip install -e .
 ```
 
-### Step 2: Instant Smoke Test (Zero Azure Setup Needed)
+### Step 2: Verify Installation
+Verify that the `aks-agent` CLI is installed and available:
+```bash
+aks-agent --help
+```
+
+### Step 3: Instant Smoke Test (Zero Azure Setup Needed)
 Run the agent against one of the included real-world incident logs:
 ```bash
 aks-agent sample_logs/01_azure_cni_ip_exhaustion.log
